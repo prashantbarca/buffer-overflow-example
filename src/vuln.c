@@ -1,27 +1,25 @@
 #include <stdio.h>
+#include <unistd.h>
 #include <string.h>
+#include <stdlib.h>
 
 void win() {
     printf("\nCongratulations! You reached win()!\n");
+    exit(0);
 }
 
-void vulnerable(char *input) {
+void vulnerable() {
     char buffer[16];
 
-    printf("Address of buffer: %p\n", buffer);
-    strcpy(buffer, input);
+    printf("Enter some data: \n");
+
+    fgets(buffer, 200, stdin);  // intentionally oversized read
 
     printf("You entered: %s\n", buffer);
 }
 
-int main(int argc, char *argv[]) {
-    if (argc < 2) {
-        printf("Usage: %s <input>\n", argv[0]);
-        return 1;
-    }
-
-    vulnerable(argv[1]);
-
+int main() {
+    vulnerable();
     printf("Returning from main...\n");
     return 0;
 }

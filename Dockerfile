@@ -20,8 +20,7 @@ RUN dpkg --add-architecture i386 && \
 
 # Create non-root user
 RUN useradd -m -s /bin/bash student && \
-    echo "student:student" | chpasswd && \
-    usermod -aG sudo student
+    echo "student ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # Create working directory
 WORKDIR /home/student/lab
