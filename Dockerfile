@@ -14,7 +14,7 @@ RUN dpkg --add-architecture i386 && \
         python3 \
         vim \
         nano \
-        file \
+        file less \
         sudo && \
     apt clean
 
